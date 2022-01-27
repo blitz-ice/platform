@@ -10,6 +10,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatTreeModule } from '@angular/material/tree';
+
 import { HttpClientModule } from '@angular/common/http';
 import {
   TranslocoHttpLoader,
@@ -32,6 +34,7 @@ import { environment } from 'src/environments/environment';
     MatButtonModule,
     MatIconModule,
     MatSidenavModule,
+    MatTreeModule,
 
     StoreModule.forRoot({}, {}),
 

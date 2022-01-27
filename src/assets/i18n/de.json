@@ -1,6 +1,18 @@
 {
   "nav": {
-    "title": "Navigation"
+    "title": "Navigation",
+    "learn": {
+      "title": "Lernen"
+    },
+    "code": {
+      "title": "Coden"
+    },
+    "play": {
+      "title": "Spielen"
+    },
+    "share": {
+      "title": "Teilen"
+    }
   },
   "toolbar": {
     "title": "Blitz Ice 🧊 Lerne - Code - Spiele - Teile"

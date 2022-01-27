@@ -1,6 +1,33 @@
 <mat-drawer-container class="app-container" autosize>
   <mat-drawer #drawer class="side-nav" mode="side">
+    <div class="close-side-nav" (click)="drawer.toggle()">
+      <mat-icon>close</mat-icon>
+    </div>
     <h1>{{ 'nav.title' | transloco }}</h1>
+    <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+      <!-- This is the tree node template for leaf nodes -->
+      <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+        <!-- use a disabled button to provide padding for tree leaf -->
+        <button mat-icon-button disabled></button>
+        {{ node.name }}
+      </mat-tree-node>
+      <!-- This is the tree node template for expandable nodes -->
+      <mat-tree-node
+        *matTreeNodeDef="let node; when: hasChild"
+        matTreeNodePadding
+      >
+        <button
+          mat-icon-button
+          matTreeNodeToggle
+          [attr.aria-label]="'Toggle ' + node.name"
+        >
+          <mat-icon class="mat-icon-rtl-mirror">
+            {{ treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right' }}
+          </mat-icon>
+        </button>
+        {{ node.name }}
+      </mat-tree-node>
+    </mat-tree>
   </mat-drawer>
 
   <div class="app-content">
@@ -24,10 +51,3 @@
     </main>
   </div>
 </mat-drawer-container>
-
-<!-- <mat-sidenav-container class="side-nav-container" *ngIf="true">
-  <mat-sidenav mode="side" opened>Sidenav content</mat-sidenav>
-  <mat-sidenav-content>Main content</mat-sidenav-content>
-</mat-sidenav-container>
-
- -->
