@@ -1,0 +1,11 @@
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #eee;
+
+  img {
+    width: auto;
+    max-height: calc(100vh - 150px);
+  }
+}

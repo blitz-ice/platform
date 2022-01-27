@@ -1,0 +1,24 @@
+.app-container {
+  width: 100vw;
+  height: 100vh;
+}
+
+.app-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+
+  main {
+    margin: 20px;
+  }
+}
+
+.side-nav {
+  padding: 20px;
+}
+
+.toolbar-spacer {
+  flex: 1 1 auto;
+}
