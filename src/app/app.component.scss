@@ -12,6 +12,8 @@
 
   main {
     margin: 20px;
+    width: 100%;
+    height: 100%;
   }
 }
 
@@ -22,6 +24,17 @@
 
   .close-side-nav {
     display: none;
+  }
+
+  .links {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: calc(100vh - 200px);
+
+    .nav-icon {
+      margin-right: 15px;
+    }
   }
 }
 

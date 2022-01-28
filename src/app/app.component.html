@@ -3,31 +3,60 @@
     <div class="close-side-nav" (click)="drawer.toggle()">
       <mat-icon>close</mat-icon>
     </div>
+
     <h1>{{ 'nav.title' | transloco }}</h1>
-    <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
-      <!-- This is the tree node template for leaf nodes -->
-      <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
-        <!-- use a disabled button to provide padding for tree leaf -->
-        <button mat-icon-button disabled></button>
-        {{ node.name }}
-      </mat-tree-node>
-      <!-- This is the tree node template for expandable nodes -->
-      <mat-tree-node
-        *matTreeNodeDef="let node; when: hasChild"
-        matTreeNodePadding
-      >
-        <button
-          mat-icon-button
-          matTreeNodeToggle
-          [attr.aria-label]="'Toggle ' + node.name"
-        >
-          <mat-icon class="mat-icon-rtl-mirror">
-            {{ treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right' }}
+
+    <!-- NAVIGATION LINKS -->
+    <div class="links">
+      <!-- NAVIGATION TREE -->
+      <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+        <!-- This is the tree node template for leaf nodes -->
+        <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+          <!-- use a disabled button to provide padding for tree leaf -->
+          <button mat-icon-button disabled></button>
+          <mat-icon class="nav-icon" *ngIf="node.icon">
+            {{ node.icon }}
           </mat-icon>
-        </button>
-        {{ node.name }}
-      </mat-tree-node>
-    </mat-tree>
+          <span class="link" [routerLink]="node.url">
+            {{ 'nav.' + node.label + '.title' | transloco }} {{ node.url }}
+          </span>
+        </mat-tree-node>
+        <!-- This is the tree node template for expandable nodes -->
+        <mat-tree-node
+          *matTreeNodeDef="let node; when: hasChild"
+          matTreeNodePadding
+        >
+          <button
+            mat-icon-button
+            matTreeNodeToggle
+            [attr.aria-label]="'Toggle ' + node.label"
+          >
+            <mat-icon class="mat-icon-rtl-mirror">
+              {{
+                treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'
+              }}
+            </mat-icon>
+          </button>
+          <mat-icon class="nav-icon" *ngIf="node.icon">
+            {{ node.icon }}
+          </mat-icon>
+          {{ 'nav.' + node.label + '.title' | transloco }}
+        </mat-tree-node>
+      </mat-tree>
+
+      <!-- LEGAL LINKS -->
+      <mat-list class="legal-links">
+        <mat-list-item class="link" routerLink="/legal/imprint">
+          {{ 'nav.imprint.title' | transloco }}
+        </mat-list-item>
+        <mat-list-item class="link" routerLink="/legal/disclaimer">
+          {{ 'nav.disclaimer.title' | transloco }}
+        </mat-list-item>
+        <mat-list-item class="link" routerLink="/legal/privacy-policy">
+          {{ 'nav.privacy-policy.title' | transloco }}
+        </mat-list-item>
+      </mat-list>
+    </div>
   </mat-drawer>
 
   <div class="app-content">
@@ -42,7 +71,7 @@
       <span>{{ 'toolbar.title' | transloco }}</span>
       <span class="toolbar-spacer"></span>
       <button mat-icon-button aria-label="Example icon-button with share icon">
-        <mat-icon>share</mat-icon>
+        <mat-icon>account_circle</mat-icon>
       </button>
     </mat-toolbar>
 

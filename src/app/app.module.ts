@@ -11,6 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTreeModule } from '@angular/material/tree';
+import { MatListModule } from '@angular/material/list';
 
 import { HttpClientModule } from '@angular/common/http';
 import {
@@ -35,6 +36,7 @@ import { environment } from 'src/environments/environment';
     MatIconModule,
     MatSidenavModule,
     MatTreeModule,
+    MatListModule,
 
     StoreModule.forRoot({}, {}),
 

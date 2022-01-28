@@ -1,42 +1,77 @@
 import { FlatTreeControl } from '@angular/cdk/tree';
 import { Component } from '@angular/core';
-import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
+import {
+  MatTreeFlatDataSource,
+  MatTreeFlattener,
+} from '@angular/material/tree';
+import { NavFlatNode } from './core/interfaces/nav-flat-node.interface';
+import { NavTreeNode } from './core/interfaces/nav-tree-node.interface';
 
-/**
- * Food data with nested structure.
- * Each node has a name and an optional list of children.
- */
-interface FoodNode {
-  name: string;
-  children?: FoodNode[];
-}
-
-const TREE_DATA: FoodNode[] = [
+const SIDE_NAV_TREE: NavTreeNode[] = [
   {
-    name: 'Fruit',
-    children: [{ name: 'Apple' }, { name: 'Banana' }, { name: 'Fruit loops' }],
-  },
-  {
-    name: 'Vegetables',
+    label: 'home',
+    icon: 'other_houses',
     children: [
       {
-        name: 'Green',
-        children: [{ name: 'Broccoli' }, { name: 'Brussels sprouts' }],
+        label: 'home.news',
+        icon: 'feed',
+        url: '/'
       },
       {
-        name: 'Orange',
-        children: [{ name: 'Pumpkins' }, { name: 'Carrots' }],
+        label: 'stuff (?)'
+      }
+    ]
+  },
+  {
+    label: 'learn',
+    icon: 'school',
+    children: [
+      {
+        label: 'learn.tutorials',
       },
     ],
   },
+  {
+    label: 'code',
+    icon: 'keyboard_alt',
+  },
+  {
+    label: 'play',
+    icon: 'sports_esports',
+    children: [
+      {
+        label: 'playground',
+      },
+    ],
+  },
+  {
+    label: 'share',
+    icon: 'share',
+  },
+  {
+    label: 'docs',
+    icon: 'menu_book',
+    children: [
+      {
+        label: 'docs.web-ide',
+      },
+      {
+        label: 'docs.blitz-basic-script',
+      },
+      {
+        label: 'docs.testing',
+      },
+      {
+        label: 'docs.release',
+      },
+    ],
+  },
+  {
+    label: 'faq',
+    icon: 'contact_support',
+    url: '/faq'
+  },
 ];
-
-/** Flat node with expandable and level information */
-interface ExampleFlatNode {
-  expandable: boolean;
-  name: string;
-  level: number;
-}
 
 @Component({
   selector: 'app-root',
@@ -44,15 +79,17 @@ interface ExampleFlatNode {
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  private _transformer = (node: FoodNode, level: number) => {
+  private _transformer = (node: NavTreeNode, level: number) => {
     return {
       expandable: !!node.children && node.children.length > 0,
-      name: node.name,
+      label: node.label,
+      icon: node.icon ?? undefined,
+      url: node.url ?? undefined,
       level: level,
     };
   };
 
-  treeControl = new FlatTreeControl<ExampleFlatNode>(
+  treeControl = new FlatTreeControl<NavFlatNode>(
     (node) => node.level,
     (node) => node.expandable
   );
@@ -67,8 +104,8 @@ export class AppComponent {
   dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
 
   constructor() {
-    this.dataSource.data = TREE_DATA;
+    this.dataSource.data = SIDE_NAV_TREE;
   }
 
-  hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
+  hasChild = (_: number, node: NavFlatNode) => node.expandable;
 }

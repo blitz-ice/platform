@@ -1,8 +1,17 @@
 {
   "nav": {
     "title": "Navigation",
+    "home": {
+      "title": "Home",
+      "news": {
+        "title": "Neues"
+      }
+    },
     "learn": {
-      "title": "Lernen"
+      "title": "Lernen",
+      "tutorials": {
+        "title": "Tutorials"
+      }
     },
     "code": {
       "title": "Coden"
@@ -12,6 +21,33 @@
     },
     "share": {
       "title": "Teilen"
+    },
+    "docs": {
+      "title": "Doku",
+      "web-ide": {
+        "title": "Web IDE"
+      },
+      "blitz-basic-script": {
+        "title": "Blitz Basic Script"
+      },
+      "testing": {
+        "title": "Testen"
+      },
+      "release": {
+        "title": "Veröffentlichen"
+      }
+    },
+    "faq": {
+      "title": "FAQ"
+    },
+    "imprint": {
+      "title": "Impressum"
+    },
+    "disclaimer": {
+      "title": "Haftungsausschluss"
+    },
+    "privacy-policy": {
+      "title": "Datenschutzerklärung"
     }
   },
   "toolbar": {
