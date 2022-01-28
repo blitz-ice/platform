@@ -1,1 +1,43 @@
-<p>code works!</p>
+<mat-toolbar>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+   <mat-icon>menu</mat-icon>
+ </button>
+ <span>Toolbar with fancy icons</span>
+ <span class="example-spacer"></span>
+ <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+   <mat-icon>favorite</mat-icon>
+ </button>
+ <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+  <mat-icon>share</mat-icon>
+</button>
+</mat-toolbar>
+
+<div #target class="target">
+  Scene Graph
+</div>
+<ngx-moveable
+  [target]="target"
+  [resizable]="true"
+  [throttleResize]="0"
+  [keepRatio]="false"
+  (resizeStart)="onResizeStart($event)"
+  (resize)="onResize($event)"
+  (resizeEnd)="onResizeEnd($event)"
+></ngx-moveable>
+
+<div #inspector class="inspector">
+  Inspector
+</div>
+
+<div #mainContainer class="main-container">
+  <!-- <ace
+  [config]="aceConfig"
+  [mode]="'javascript'"
+  [theme]="'twilight'"
+  [(value)]="aceCode"
+></ace> -->
+</div>
+
+<div #assets class="assets">
+  Asset Manager
+</div>

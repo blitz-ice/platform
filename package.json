@@ -22,6 +22,9 @@
     "@angular/router": "~13.2.0",
     "@ngneat/transloco": "^3.1.3",
     "@ngrx/store": "^13.0.2",
+    "ace-builds": "^1.4.14",
+    "ngx-ace-wrapper": "^11.0.1",
+    "ngx-moveable": "^0.24.3",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

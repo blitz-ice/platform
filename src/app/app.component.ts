@@ -11,38 +11,22 @@ const SIDE_NAV_TREE: NavTreeNode[] = [
   {
     label: 'home',
     icon: 'other_houses',
-    children: [
-      {
-        label: 'home.news',
-        icon: 'feed',
-        url: '/'
-      },
-      {
-        label: 'stuff (?)'
-      }
-    ]
+    url: '/'
   },
   {
     label: 'learn',
     icon: 'school',
-    children: [
-      {
-        label: 'learn.tutorials',
-      },
-    ],
+    url: '/learn'
   },
   {
     label: 'code',
     icon: 'keyboard_alt',
+    url: '/code'
   },
   {
     label: 'play',
     icon: 'sports_esports',
-    children: [
-      {
-        label: 'playground',
-      },
-    ],
+    url: '/play'
   },
   {
     label: 'share',
