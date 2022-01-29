@@ -40,19 +40,30 @@
           <mat-icon class="nav-icon" *ngIf="node.icon">
             {{ node.icon }}
           </mat-icon>
-          {{ 'nav.' + node.label + '.title' | transloco }}
+          <span class="link" [routerLink]="node.url">
+            {{ 'nav.' + node.label + '.title' | transloco }}
+          </span>
         </mat-tree-node>
       </mat-tree>
 
       <!-- LEGAL LINKS -->
       <mat-list class="legal-links">
-        <mat-list-item class="link" routerLink="/legal/imprint">
+        <mat-list-item
+          class="link"
+          [routerLink]="routingUrls['imprint'][activeLanguage]"
+        >
           {{ 'nav.imprint.title' | transloco }}
         </mat-list-item>
-        <mat-list-item class="link" routerLink="/legal/disclaimer">
+        <mat-list-item
+          class="link"
+          [routerLink]="routingUrls['disclaimer'][activeLanguage]"
+        >
           {{ 'nav.disclaimer.title' | transloco }}
         </mat-list-item>
-        <mat-list-item class="link" routerLink="/legal/privacy-policy">
+        <mat-list-item
+          class="link"
+          [routerLink]="routingUrls['privacyPolicy'][activeLanguage]"
+        >
           {{ 'nav.privacy-policy.title' | transloco }}
         </mat-list-item>
       </mat-list>

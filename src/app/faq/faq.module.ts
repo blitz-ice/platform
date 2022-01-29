@@ -3,15 +3,17 @@ import { CommonModule } from '@angular/common';
 
 import { FaqRoutingModule } from './faq-routing.module';
 import { FaqComponent } from './faq.component';
+import { TranslocoModule } from '@ngneat/transloco';
 
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
-  declarations: [
-    FaqComponent
-  ],
+  declarations: [FaqComponent],
   imports: [
     CommonModule,
-    FaqRoutingModule
-  ]
+    FaqRoutingModule,
+    TranslocoModule,
+    MatExpansionModule,
+  ],
 })
-export class FaqModule { }
+export class FaqModule {}

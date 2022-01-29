@@ -1,1 +1,13 @@
-<p>faq works!</p>
+<mat-accordion>
+  <mat-expansion-panel *ngFor="let question of questions">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{ 'faq.' + question + '.title' | transloco }}
+      </mat-panel-title>
+      <mat-panel-description class="right-aligned">
+        {{ 'faq.' + question + '.description' | transloco }}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div [innerHTML]="'faq.' + question + '.content' | transloco"></div>
+  </mat-expansion-panel>
+</mat-accordion>

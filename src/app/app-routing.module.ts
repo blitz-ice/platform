@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { languageKeys } from './core/constants/language-keys.const';
+import { routingUrls } from './core/constants/routing.const';
 
 const routes: Routes = [
   {
@@ -7,37 +9,37 @@ const routes: Routes = [
     loadChildren: () =>
       import('./landing/landing.module').then((m) => m.LandingModule),
   },
-  {
-    path: 'learn',
+  ...languageKeys.map((languageKey: string) => ({
+    path: routingUrls['learn'][languageKey],
     loadChildren: () =>
       import('./learn/learn.module').then((m) => m.LearnModule),
-  },
-  {
-    path: 'code',
+  })),
+  ...languageKeys.map((languageKey: string) => ({
+    path: routingUrls['code'][languageKey],
     loadChildren: () => import('./code/code.module').then((m) => m.CodeModule),
-  },
-  {
-    path: 'play',
+  })),
+  ...languageKeys.map((languageKey: string) => ({
+    path: routingUrls['play'][languageKey],
     loadChildren: () => import('./play/play.module').then((m) => m.PlayModule),
-  },
-  {
-    path: 'share',
+  })),
+  ...languageKeys.map((languageKey: string) => ({
+    path: routingUrls['share'][languageKey],
     loadChildren: () =>
       import('./share/share.module').then((m) => m.ShareModule),
-  },
-  {
-    path: 'docs',
+  })),
+  ...languageKeys.map((languageKey: string) => ({
+    path: routingUrls['docs'][languageKey],
     loadChildren: () => import('./docs/docs.module').then((m) => m.DocsModule),
-  },
-  {
-    path: 'faq',
+  })),
+  ...languageKeys.map((languageKey: string) => ({
+    path: routingUrls['faq'][languageKey],
     loadChildren: () => import('./faq/faq.module').then((m) => m.FaqModule),
-  },
-  {
-    path: 'legal',
+  })),
+  ...languageKeys.map((languageKey: string) => ({
+    path: routingUrls['legal'][languageKey],
     loadChildren: () =>
       import('./legal/legal.module').then((m) => m.LegalModule),
-  },
+  })),
 ];
 
 @NgModule({

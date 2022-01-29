@@ -4,58 +4,10 @@ import {
   MatTreeFlatDataSource,
   MatTreeFlattener,
 } from '@angular/material/tree';
+import { TranslocoService } from '@ngneat/transloco';
+import { routingUrls } from './core/constants/routing.const';
 import { NavFlatNode } from './core/interfaces/nav-flat-node.interface';
 import { NavTreeNode } from './core/interfaces/nav-tree-node.interface';
-
-const SIDE_NAV_TREE: NavTreeNode[] = [
-  {
-    label: 'home',
-    icon: 'other_houses',
-    url: '/'
-  },
-  {
-    label: 'learn',
-    icon: 'school',
-    url: '/learn'
-  },
-  {
-    label: 'code',
-    icon: 'keyboard_alt',
-    url: '/code'
-  },
-  {
-    label: 'play',
-    icon: 'sports_esports',
-    url: '/play'
-  },
-  {
-    label: 'share',
-    icon: 'share',
-  },
-  {
-    label: 'docs',
-    icon: 'menu_book',
-    children: [
-      {
-        label: 'docs.web-ide',
-      },
-      {
-        label: 'docs.blitz-basic-script',
-      },
-      {
-        label: 'docs.testing',
-      },
-      {
-        label: 'docs.release',
-      },
-    ],
-  },
-  {
-    label: 'faq',
-    icon: 'contact_support',
-    url: '/faq'
-  },
-];
 
 @Component({
   selector: 'app-root',
@@ -63,6 +15,9 @@ const SIDE_NAV_TREE: NavTreeNode[] = [
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  routingUrls = routingUrls;
+  activeLanguage = this.transloco.getActiveLang();
+
   private _transformer = (node: NavTreeNode, level: number) => {
     return {
       expandable: !!node.children && node.children.length > 0,
@@ -87,8 +42,58 @@ export class AppComponent {
 
   dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
 
-  constructor() {
-    this.dataSource.data = SIDE_NAV_TREE;
+  constructor(private transloco: TranslocoService) {
+    this.dataSource.data = [
+      {
+        label: 'home',
+        icon: 'other_houses',
+        url: '/',
+      },
+      {
+        label: 'learn',
+        icon: 'school',
+        url: routingUrls['learn'][this.activeLanguage],
+      },
+      {
+        label: 'code',
+        icon: 'keyboard_alt',
+        url: routingUrls['code'][this.activeLanguage],
+      },
+      {
+        label: 'play',
+        icon: 'sports_esports',
+        url: routingUrls['play'][this.activeLanguage],
+      },
+      {
+        label: 'share',
+        icon: 'share',
+        url: routingUrls['share'][this.activeLanguage],
+      },
+      {
+        label: 'docs',
+        icon: 'menu_book',
+        url: routingUrls['docs'][this.activeLanguage],
+        children: [
+          {
+            label: 'docs.web-ide',
+          },
+          {
+            label: 'docs.blitz-basic-script',
+          },
+          {
+            label: 'docs.testing',
+          },
+          {
+            label: 'docs.release',
+          },
+        ],
+      },
+      {
+        label: 'faq',
+        icon: 'contact_support',
+        url: routingUrls['faq'][this.activeLanguage],
+      },
+    ];
   }
 
   hasChild = (_: number, node: NavFlatNode) => node.expandable;

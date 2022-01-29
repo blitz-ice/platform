@@ -1,4 +1,5 @@
 {
+  "todo": "To Do",
   "nav": {
     "title": "Navigation",
     "home": {
@@ -48,6 +49,80 @@
     },
     "privacy-policy": {
       "title": "Datenschutzerklärung"
+    }
+  },
+  "home": {
+    "tabs": {
+      "info": "Infos",
+      "news": "Neues"
+    }
+  },
+  "learn": {
+    "cards": {
+      "tour": "Tour",
+      "tutorials": "Tutorials",
+      "videos": "Videos"
+    }
+  },
+  "code": {},
+  "play": {
+    "tabs": {
+      "my-games": "Meine Spiele",
+      "new-games": "Neue Spiele",
+      "popular-games": "Beliebte Spiele"
+    }
+  },
+  "docs": {
+    "cards": {
+      "basics": {
+        "title": "Grundlagen"
+      },
+      "blitz-basic-script": {
+        "title": "BlitzBasicScript"
+      },
+      "2d": {
+        "title": "2D-Spiele"
+      },
+      "3d": {
+        "title": "3D-Spiele"
+      }
+    }
+  },
+  "faq": {
+    "what-is-blitz-ice": {
+      "title": "Was ist Blitz Ice?",
+      "description": "To Do",
+      "content": "<b>Blitz Ice</b> ist eine moderne Online-Plattform, auf der du Spiele entwickeln und mit anderen teilen kannst."
+    },
+    "how-to-start": {
+      "title": "Wie fange ich am besten an?",
+      "description": "To Do",
+      "content": "<b>Blitz Ice</b> ist eine moderne Online-Plattform, auf der du Spiele entwickeln und mit anderen teilen kannst."
+    },
+    "what-is-web-ide": {
+      "title": "Was bedeutet Web-IDE?",
+      "description": "To Do",
+      "content": "<b>Blitz Ice</b> ist eine moderne Online-Plattform, auf der du Spiele entwickeln und mit anderen teilen kannst."
+    },
+    "what-is-blitz-basic-script": {
+      "title": "Was ist BlitzBasicScript?",
+      "description": "To Do",
+      "content": "<b>Blitz Ice</b> ist eine moderne Online-Plattform, auf der du Spiele entwickeln und mit anderen teilen kannst."
+    },
+    "save-projects-offline": {
+      "title": "Kann ich meine Projekte offline speichern?",
+      "description": "To Do",
+      "content": "<b>Blitz Ice</b> ist eine moderne Online-Plattform, auf der du Spiele entwickeln und mit anderen teilen kannst."
+    },
+    "how-to-publish": {
+      "title": "Wie kann ich mein Projekt veröffentlichen?",
+      "description": "To Do",
+      "content": "<b>Blitz Ice</b> ist eine moderne Online-Plattform, auf der du Spiele entwickeln und mit anderen teilen kannst."
+    },
+    "common-projects": {
+      "title": "Lassen sich Projekte gemeinsam bearbeiten?",
+      "description": "To Do",
+      "content": "<b>Ja.</b>"
     }
   },
   "toolbar": {
