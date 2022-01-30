@@ -25,88 +25,68 @@
 </mat-toolbar>
 
 <div class="ide-windows-container" #ideWindowsContainer>
+  <!-- Left Window -->
   <div
+    #windowLeft
     class="ide-window left"
     [style.width]="ideWindows.left.width + 'px'"
     [style.height]="ideWindows.left.height + 'px'"
   >
     Left
   </div>
+  <ngx-moveable
+    [target]="windowLeft"
+    [resizable]="true"
+    [throttleResize]="0"
+    [keepRatio]="false"
+    (resize)="onResize($event)"
+  ></ngx-moveable>
+
+  <!-- Center Window -->
   <div
     class="ide-window center"
     [style.width]="ideWindows.center.width + 'px'"
     [style.height]="ideWindows.center.height + 'px'"
   >
-    Center
+    <ace
+      [config]="aceConfig"
+      [mode]="'javascript'"
+      [theme]="'twilight'"
+      [(value)]="aceCode"
+    ></ace>
   </div>
+
+  <!-- Right Window -->
   <div
+    #windowRight
     class="ide-window right"
     [style.width]="ideWindows.right.width + 'px'"
     [style.height]="ideWindows.right.height + 'px'"
   >
     Right
   </div>
+  <ngx-moveable
+    [target]="windowRight"
+    [resizable]="true"
+    [throttleResize]="0"
+    [keepRatio]="false"
+    (resize)="onResize($event)"
+  ></ngx-moveable>
+
+  <!-- Bottom Window -->
   <div
+    #windowBottom
     class="ide-window bottom"
     [style.width]="ideWindows.bottom.width + 'px'"
     [style.height]="ideWindows.bottom.height + 'px'"
   >
     Bottom
   </div>
-</div>
-
-<div class="ide-windows-container" #ideWindowsContainer *ngIf="false">
-  <div class="ide-windows top" *ngIf="false">
-    <div
-      #target
-      class="ide-window left"
-      [style.width]="ideWindows.left.width + 'px'"
-      [style.height]="ideWindows.left.height + 'px'"
-    >
-      Scene Graph
-    </div>
-    <!-- <ngx-moveable
-      [target]="target"
-      [resizable]="true"
-      [throttleResize]="0"
-      [keepRatio]="false"
-      (resizeStart)="onResizeStart($event)"
-      (resize)="onResize($event)"
-      (resizeEnd)="onResizeEnd($event)"
-    ></ngx-moveable> -->
-
-    <div
-      #mainContainer
-      class="ide-window center"
-      [style.width]="ideWindows.center.width + 'px'"
-      [style.height]="ideWindows.center.height + 'px'"
-    >
-      <!-- <ace
-      [config]="aceConfig"
-      [mode]="'javascript'"
-      [theme]="'twilight'"
-      [(value)]="aceCode"
-    ></ace> -->
-    </div>
-
-    <div
-      #inspector
-      class="ide-window right"
-      [style.width]="ideWindows.right.width + 'px'"
-      [style.height]="ideWindows.right.height + 'px'"
-    >
-      Inspector
-    </div>
-  </div>
-
-  <div class="ide-windows bottom" *ngIf="false">
-    <div
-      #assets
-      class="ide-window bottom"
-      [style.width]="ideWindows.bottom.width + 'px'"
-      [style.height]="ideWindows.bottom.height + 'px'"
-    >
-      Asset Manager
-    </div>
-  </div>
+  <ngx-moveable
+    [target]="windowBottom"
+    [resizable]="true"
+    [throttleResize]="0"
+    [keepRatio]="false"
+    (resize)="onResize($event)"
+  ></ngx-moveable>
 </div>

@@ -32,7 +32,7 @@ export class CodeComponent implements OnInit, AfterViewInit {
   };
 
   @HostListener('window:resize', ['$event'])
-  onBrowserResize(event: CustomEvent) {
+  onBrowserResize() {
     this.resizeIdeWindows();
   }
 
@@ -64,54 +64,108 @@ export class CodeComponent implements OnInit, AfterViewInit {
     }, 0);
   }
 
-  resizeIdeWindows(): void {
+  resizeIdeWindows(config?: {
+    which: string;
+    width: number;
+    height: number;
+  }): void {
     const ideWindowDimensions = {
       width: this.ideWindowsContainer.nativeElement.offsetWidth,
       height: this.ideWindowsContainer.nativeElement.offsetHeight,
     };
-    this.ideWindows.left = {
-      width: 200,
-      height: ideWindowDimensions.height - 100,
-    };
-    this.ideWindows.center = {
-      width: ideWindowDimensions.width - 400,
-      height: ideWindowDimensions.height - 100,
-    };
-    this.ideWindows.right = {
-      width: 200,
-      height: ideWindowDimensions.height - 100,
-    };
-    this.ideWindows.bottom = {
-      width: ideWindowDimensions.width,
-      height: 100,
-    };
+
+    if (config === undefined) {
+      this.ideWindows = {
+        left: {
+          width: 200,
+          height: ideWindowDimensions.height - 100,
+        },
+        center: {
+          width: ideWindowDimensions.width - 400,
+          height: ideWindowDimensions.height - 100,
+        },
+        right: {
+          width: 200,
+          height: ideWindowDimensions.height - 100,
+        },
+        bottom: {
+          width: ideWindowDimensions.width,
+          height: 100,
+        },
+      };
+      return;
+    }
+
+    switch (config.which) {
+      case 'left':
+        this.ideWindows = {
+          ...this.ideWindows,
+          left: {
+            width: config.width,
+            height: config.height,
+          },
+          center: {
+            width:
+              ideWindowDimensions.width -
+              this.ideWindows.right.width -
+              config.width,
+            height: config.height,
+          },
+        };
+        break;
+      case 'right':
+        this.ideWindows = {
+          ...this.ideWindows,
+          right: {
+            width: config.width,
+            height: config.height,
+          },
+          center: {
+            width:
+              ideWindowDimensions.width -
+              this.ideWindows.left.width -
+              config.width,
+            height: config.height,
+          },
+        };
+        break;
+      case 'bottom':
+        this.ideWindows = {
+          ...this.ideWindows,
+          bottom: {
+            width: config.width,
+            height: config.height,
+          },
+          left: {
+            width: this.ideWindows.left.width,
+            height: ideWindowDimensions.height - config.height,
+          },
+          center: {
+            width:
+              ideWindowDimensions.width -
+              this.ideWindows.left.width -
+              config.width,
+            height: config.height,
+          },
+          right: {
+            width: this.ideWindows.right.width,
+            height: ideWindowDimensions.height - config.height,
+          },
+        };
+        break;
+    }
   }
 
   frame = {
     translate: [0, 0],
   };
-  onResizeStart({ target, set, setOrigin, dragStart }: any) {
-    // Set origin if transform-origin use %.
-    setOrigin(['%', '%']);
 
-    // If cssSize and offsetSize are different, set cssSize. (no box-sizing)
-    const style = window.getComputedStyle(target);
-    const cssWidth = parseFloat(style.width);
-    const cssHeight = parseFloat(style.height);
-    set([cssWidth, cssHeight]);
-
-    // If a drag event has already occurred, there is no dragStart.
-    dragStart && dragStart.set(this.frame.translate);
-  }
-  onResize({ target, width, height, drag }: any) {
-    target.style.width = `${width}px`;
-    target.style.height = `${height}px`;
-
-    // get drag event
-    this.frame.translate = drag.beforeTranslate;
-    target.style.transform = `translate(${drag.beforeTranslate[0]}px, ${drag.beforeTranslate[1]}px)`;
-  }
-  onResizeEnd({ target, isDrag, clientX, clientY }: any) {
-    console.log('onResizeEnd', target, isDrag);
+  onResize(event: any) {
+    const className = event.target.getAttribute('class');
+    this.resizeIdeWindows({
+      which: className.split(' ').reverse()[0],
+      width: event.width,
+      height: event.height,
+    });
   }
 }
