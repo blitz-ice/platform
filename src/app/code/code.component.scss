@@ -1,5 +1,35 @@
-.target {
-  width: 200px;
-  height: 150px;
-  background: #666;
+.ide-windows-container {
+  background: purple;
+  width: 100%;
+  height: calc(100% - 50px);
+  display: flex;
+  flex-direction: row;
+  flex-flow: wrap;
+  align-items: flex-start;
+
+  .ide-window {
+    &.left {
+      width: 200px;
+      height: calc(100% - 100px);
+      background: greenyellow;
+    }
+
+    &.center {
+      width: calc(100% - 400px);
+      height: calc(100% - 100px);
+      background: magenta;
+    }
+
+    &.right {
+      width: 200px;
+      height: calc(100% - 100px);
+      background: brown;
+    }
+
+    &.bottom {
+      width: 100%;
+      height: 100px;
+      background: honeydew;
+    }
+  }
 }
