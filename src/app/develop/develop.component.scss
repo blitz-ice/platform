@@ -1,7 +1,7 @@
 .ide-windows-container {
   background: purple;
   width: 100%;
-  height: calc(100% - 50px);
+  height: calc(100% - 90px);
   display: flex;
   flex-direction: row;
   flex-flow: wrap;
@@ -10,7 +10,7 @@
   .ide-window {
     &.left {
       width: 200px;
-      height: calc(100% - 100px);
+      height: auto;
       background: greenyellow;
     }
 

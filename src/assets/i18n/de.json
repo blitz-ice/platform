@@ -14,8 +14,8 @@
         "title": "Tutorials"
       }
     },
-    "code": {
-      "title": "Coden"
+    "develop": {
+      "title": "Entwickeln"
     },
     "play": {
       "title": "Spielen"
@@ -64,7 +64,7 @@
       "videos": "Videos"
     }
   },
-  "code": {},
+  "develop": {},
   "play": {
     "tabs": {
       "my-games": "Meine Spiele",
@@ -126,6 +126,6 @@
     }
   },
   "toolbar": {
-    "title": "Blitz Ice 🧊 Lerne - Code - Spiele - Teile"
+    "title": "Blitz Ice 🧊 Lerne - Entwickle - Spiele - Teile"
   }
 }

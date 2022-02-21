@@ -12,15 +12,14 @@ import 'brace';
 import 'brace/mode/javascript';
 import 'brace/theme/twilight';
 import { AceConfigInterface } from 'ngx-ace-wrapper';
-import { BehaviorSubject } from 'rxjs';
 import { ContainerDimensions } from '../core/interfaces/container-dimensions.interface';
 
 @Component({
-  selector: 'app-code',
-  templateUrl: './code.component.html',
-  styleUrls: ['./code.component.scss'],
+  selector: 'app-develop',
+  templateUrl: './develop.component.html',
+  styleUrls: ['./develop.component.scss'],
 })
-export class CodeComponent implements OnInit, AfterViewInit {
+export class DevelopComponent implements OnInit, AfterViewInit {
   // ide windows
   @ViewChild('ideWindowsContainer')
   ideWindowsContainer!: ElementRef<HTMLDivElement>;
@@ -155,10 +154,6 @@ export class CodeComponent implements OnInit, AfterViewInit {
         break;
     }
   }
-
-  frame = {
-    translate: [0, 0],
-  };
 
   onResize(event: any) {
     const className = event.target.getAttribute('class');

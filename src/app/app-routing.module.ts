@@ -15,8 +15,9 @@ const routes: Routes = [
       import('./learn/learn.module').then((m) => m.LearnModule),
   })),
   ...languageKeys.map((languageKey: string) => ({
-    path: routingUrls['code'][languageKey],
-    loadChildren: () => import('./code/code.module').then((m) => m.CodeModule),
+    path: routingUrls['develop'][languageKey],
+    loadChildren: () =>
+      import('./develop/develop.module').then((m) => m.DevelopModule),
   })),
   ...languageKeys.map((languageKey: string) => ({
     path: routingUrls['play'][languageKey],

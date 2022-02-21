@@ -55,9 +55,9 @@ export class AppComponent {
         url: routingUrls['learn'][this.activeLanguage],
       },
       {
-        label: 'code',
+        label: 'develop',
         icon: 'keyboard_alt',
-        url: routingUrls['code'][this.activeLanguage],
+        url: routingUrls['develop'][this.activeLanguage],
       },
       {
         label: 'play',
